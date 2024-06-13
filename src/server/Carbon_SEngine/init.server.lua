@@ -1,4 +1,7 @@
 local d = game.ReplicatedStorage:WaitForChild("CarbonResource")
+
+ -- why broccoli bob is getting canceled for eating mac and cheese (EMOTIONAL) (EXPOSED) (COPS CALLED) (DELETED VIDEO) NOT CLICKBAIT, 1440p copyright dintisepic 2027
+
 local e = d:WaitForChild("Events")
 local m = d:WaitForChild("FX")
 local _ = d:WaitForChild("Models")
