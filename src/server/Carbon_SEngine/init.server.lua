@@ -1,85 +1,85 @@
-local d = game.ReplicatedStorage:WaitForChild("\x43\x61\x72\x62\x6F\x6E\x52\x65\x73\x6F\x75\x72\x63\x65")
-local e = d:WaitForChild("\x45\x76\x65\x6E\x74\x73")
-local m = d:WaitForChild("\x46\x58")
-local _ = d:WaitForChild("\x4D\x6F\x64\x65\x6C\x73")
-local k = _:WaitForChild("\x43\x6C\x69\x65\x6E\x74")
-local j = _:WaitForChild("\x53\x65\x72\x76\x65\x72")
-local _ = d:WaitForChild("\x48\x55\x44")
-local b = d:WaitForChild("\x47\x6C\x6F\x62\x61\x6C")
-local c = d:WaitForChild("\x4D\x6F\x64\x75\x6C\x65\x73")
+local d = game.ReplicatedStorage:WaitForChild("CarbonResource")
+local e = d:WaitForChild("Events")
+local m = d:WaitForChild("FX")
+local _ = d:WaitForChild("Models")
+local k = _:WaitForChild("Client")
+local j = _:WaitForChild("Server")
+local _ = d:WaitForChild("HUD")
+local b = d:WaitForChild("Global")
+local c = d:WaitForChild("Modules")
 local q =
     game.ReplicatedStorage:FindFirstChild(
-    "\x5B\x57\x42\x5D\x20\x4C\x65\x61\x64\x65\x72\x73\x74\x61\x74\x20\x4E\x65\x74\x77\x6F\x72\x6B"
+    "[WB] Leaderstat Network"
 ) or nil
 local w =
-    script:FindFirstChild("\x44\x61\x74\x61\x53\x74\x6F\x72\x61\x67\x65") or Instance.new("\x46\x6F\x6C\x64\x65\x72")
-w.Name = "\x44\x61\x74\x61\x53\x74\x6F\x72\x61\x67\x65"
+    script:FindFirstChild("DataStorage") or Instance.new("Folder")
+w.Name = "DataStorage"
 w.Parent = script
 local s =
-    script:FindFirstChild("\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x44\x61\x74\x61") or
-    Instance.new("\x46\x6F\x6C\x64\x65\x72")
-s.Name = "\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x44\x61\x74\x61"
+    script:FindFirstChild("AttachmentData") or
+    Instance.new("Folder")
+s.Name = "AttachmentData"
 s.Parent = script
-local o = game.ReplicatedStorage:FindFirstChild("\x4D\x65\x6E\x75\x5F\x53\x74\x6F\x72\x61\x67\x65") or nil
+local o = game.ReplicatedStorage:FindFirstChild("Menu_Storage") or nil
 local t
 local a
 local _
 local p
 if o then
-    t = o:WaitForChild("\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73")
-    a = o:WaitForChild("\x45\x76\x65\x6E\x74\x73")
-    _ = game.ReplicatedStorage:WaitForChild("\x54\x6F\x6F\x6C\x53\x74\x6F\x72\x61\x67\x65")
-    p = game.ServerStorage:WaitForChild("\x44\x61\x74\x61\x5F\x46\x6F\x6C\x64\x65\x72")
+    t = o:WaitForChild("Attachments")
+    a = o:WaitForChild("Events")
+    _ = game.ReplicatedStorage:WaitForChild("ToolStorage")
+    p = game.ServerStorage:WaitForChild("Data_Folder")
 else
-    t = d:WaitForChild("\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73")
+    t = d:WaitForChild("Attachments")
 end
-local a = game:GetService("\x48\x74\x74\x70\x53\x65\x72\x76\x69\x63\x65")
+local a = game:GetService("HttpService")
 local u = {
-    globalConfig = require(b:WaitForChild("\x47\x6C\x6F\x62\x61\x6C\x43\x6F\x6E\x66\x69\x67")),
-    ragdollModule = require(c:WaitForChild("\x52\x61\x67\x64\x6F\x6C\x6C")),
-    setupModule = require(c:WaitForChild("\x53\x65\x74\x75\x70\x4D\x6F\x64\x75\x6C\x65")),
-    utilitiesModule = require(c:WaitForChild("\x55\x74\x69\x6C\x69\x74\x69\x65\x73")),
+    globalConfig = require(b:WaitForChild("GlobalConfig")),
+    ragdollModule = require(c:WaitForChild("Ragdoll")),
+    setupModule = require(c:WaitForChild("SetupModule")),
+    utilitiesModule = require(c:WaitForChild("Utilities")),
     webConfig = require(script.Web_Config)
 }
 local v = {
-    equipEvent = e:WaitForChild("\x45\x71\x75\x69\x70"),
-    updateCharEvent = e:WaitForChild("\x55\x70\x64\x61\x74\x65\x43\x68\x61\x72"),
-    halfStepEvent = e:WaitForChild("\x48\x61\x6C\x66\x53\x74\x65\x70"),
-    damageEvent = e:WaitForChild("\x44\x61\x6D\x61\x67\x65\x45\x76\x65\x6E\x74"),
-    whizEvent = e:WaitForChild("\x57\x68\x69\x7A\x45\x76\x65\x6E\x74"),
-    hitEvent = e:WaitForChild("\x48\x69\x74\x45\x76\x65\x6E\x74"),
-    flybyEvent = e:WaitForChild("\x66\x6C\x79\x62\x79\x45\x76\x65\x6E\x74"),
-    serverFXEvent = e:WaitForChild("\x53\x65\x72\x76\x65\x72\x46\x58\x45\x76\x65\x6E\x74"),
-    storeDataEvent = e:WaitForChild("\x53\x74\x6F\x72\x65\x44\x61\x74\x61"),
-    createOwnerEvent = e:WaitForChild("\x43\x72\x65\x61\x74\x65\x4F\x77\x6E\x65\x72"),
-    manipEvent = e:WaitForChild("\x4D\x61\x6E\x69\x70\x45\x76\x65\x6E\x74"),
-    resupplyEvent = e:WaitForChild("\x52\x65\x73\x75\x70\x70\x6C\x79\x45\x76\x65\x6E\x74"),
-    medEvent = e:WaitForChild("\x4D\x65\x64\x45\x76\x65\x6E\x74"),
-    explosiveEvent = e:WaitForChild("\x45\x78\x70\x6C\x6F\x73\x69\x76\x65\x45\x76\x65\x6E\x74"),
-    connectionEvent = e:WaitForChild("\x45\x76\x65\x6E\x74\x43\x6F\x6E\x6E\x65\x63\x74\x69\x6F\x6E"),
-    nadeEvent = e:WaitForChild("\x4E\x61\x64\x65\x45\x76\x65\x6E\x74"),
-    placeC4Event = e:WaitForChild("\x50\x6C\x61\x63\x65\x43\x34"),
-    killFeedEvent = e:WaitForChild("\x4B\x69\x6C\x6C\x46\x65\x65\x64\x45\x76\x65\x6E\x74"),
-    attachmentEvent = e:WaitForChild("\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x45\x76\x65\x6E\x74"),
-    carbonAttachEvent = e:WaitForChild("\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x45\x76\x65\x6E\x74"),
-    clearAttchEvent = e:WaitForChild("\x43\x6C\x65\x61\x72\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74")
+    equipEvent = e:WaitForChild("Equip"),
+    updateCharEvent = e:WaitForChild("UpdateChar"),
+    halfStepEvent = e:WaitForChild("HalfStep"),
+    damageEvent = e:WaitForChild("DamageEvent"),
+    whizEvent = e:WaitForChild("WhizEvent"),
+    hitEvent = e:WaitForChild("HitEvent"),
+    flybyEvent = e:WaitForChild("flybyEvent"),
+    serverFXEvent = e:WaitForChild("ServerFXEvent"),
+    storeDataEvent = e:WaitForChild("StoreData"),
+    createOwnerEvent = e:WaitForChild("CreateOwner"),
+    manipEvent = e:WaitForChild("ManipEvent"),
+    resupplyEvent = e:WaitForChild("ResupplyEvent"),
+    medEvent = e:WaitForChild("MedEvent"),
+    explosiveEvent = e:WaitForChild("ExplosiveEvent"),
+    connectionEvent = e:WaitForChild("EventConnection"),
+    nadeEvent = e:WaitForChild("NadeEvent"),
+    placeC4Event = e:WaitForChild("PlaceC4"),
+    killFeedEvent = e:WaitForChild("KillFeedEvent"),
+    attachmentEvent = e:WaitForChild("AttachmentEvent"),
+    carbonAttachEvent = e:WaitForChild("AttachmentEvent"),
+    clearAttchEvent = e:WaitForChild("ClearAttachment")
 }
-local c = {"\x31\x35\x36\x35\x38\x33\x31\x34\x36\x38", "\x31\x35\x36\x35\x38\x33\x32\x33\x32\x39"}
-local d = {"\x31\x35\x36\x35\x38\x33\x31\x31\x32\x39", "\x31\x35\x36\x35\x38\x33\x30\x36\x31\x31"}
-local n = {"\x31\x35\x36\x35\x38\x32\x35\x30\x37\x35", "\x31\x35\x36\x35\x38\x32\x34\x36\x31\x33"}
-local g = {"\x31\x35\x36\x35\x38\x32\x31\x39\x34\x31", "\x31\x35\x36\x35\x38\x32\x31\x36\x33\x34"}
-local e = {"\x31\x35\x36\x35\x37\x35\x36\x38\x31\x38", "\x31\x35\x36\x35\x37\x35\x36\x36\x30\x37"}
-local i = {"\x31\x35\x36\x35\x37\x31\x37\x30\x32\x37", "\x31\x35\x36\x35\x37\x31\x36\x37\x30\x35"}
+local c = {"1565831468", "1565832329"}
+local d = {"1565831129", "1565830611"}
+local n = {"1565825075", "1565824613"}
+local g = {"1565821941", "1565821634"}
+local e = {"1565756818", "1565756607"}
+local i = {"1565717027", "1565716705"}
 local l = {2389761679, 1565675605}
 local h = {627558532, 627558676, 627558611}
 local f = {363818359, 363818293, 363818244, 363818187, 363818111}
 local r =
-    workspace:FindFirstChild("\x42\x75\x6C\x6C\x65\x74\x4D\x6F\x64\x65\x6C") or Instance.new("\x46\x6F\x6C\x64\x65\x72")
+    workspace:FindFirstChild("BulletModel") or Instance.new("Folder")
 r.Parent = workspace
-r.Name = "\x42\x75\x6C\x6C\x65\x74\x4D\x6F\x64\x65\x6C"
+r.Name = "BulletModel"
 game.Players.PlayerAdded:Connect(
     function(a)
-        local _ = Instance.new("\x46\x6F\x6C\x64\x65\x72")
+        local _ = Instance.new("Folder")
         _.Name = a.UserId
         _.Parent = s
         a.CharacterRemoving:Connect(
@@ -101,23 +101,23 @@ game.Players.PlayerRemoving:Connect(
     end
 )
 function HolsterModel(d, b, c, a, _)
-    if d.Character:FindFirstChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64") and d.Character.Humanoid.Health > 0 then
+    if d.Character:FindFirstChild("Humanoid") and d.Character.Humanoid.Health > 0 then
         local e = b[c]:clone()
-        e.Name = "\x48\x6F\x6C\x73\x74" .. c
+        e.Name = "Holst" .. c
         e.Parent = d.Character
         for _, _ in pairs(e:GetDescendants()) do
-            if _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") and _.Name ~= "\x47\x72\x69\x70" then
+            if _:IsA("BasePart") and _.Name ~= "Grip" then
                 u.utilitiesModule.Weld(_, e.Grip)
             end
         end
-        local b = Instance.new("\x4D\x6F\x74\x6F\x72\x36\x44")
-        b.Name = "\x47\x72\x69\x70\x57"
+        local b = Instance.new("Motor6D")
+        b.Name = "GripW"
         b.Parent = e.Grip
         b.Part0 = e.Grip
         b.Part1 = d.Character[a]
         b.C1 = _
         for _, _ in pairs(e:GetDescendants()) do
-            if _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
+            if _:IsA("BasePart") then
                 _.CanCollide = false
                 _.Anchored = false
             end
@@ -127,7 +127,7 @@ end
 function AttachAttachment(a, f, c, _, b)
     if f and f.Name ~= "" then
         local e
-        if string.sub(f.Name, 1, 1) == "\x40" then
+        if string.sub(f.Name, 1, 1) == "@" then
             e = string.sub(f.Name, 2)
         else
             e = f.Name
@@ -137,19 +137,19 @@ function AttachAttachment(a, f, c, _, b)
                 for _, d in pairs(t:GetChildren()) do
                     if
                         d and d.Name == a and
-                            f:WaitForChild("\x4E\x6F\x64\x65\x5F\x53\x74\x6F\x72\x61\x67\x65"):FindFirstChild(
+                            f:WaitForChild("Node_Storage"):FindFirstChild(
                                 d.PrimaryPart.Name
                             )
                      then
                         for _, _ in pairs(f:GetChildren()) do
                             if
-                                _ and _:IsA("\x4D\x6F\x64\x65\x6C") and _.PrimaryPart and
+                                _ and _:IsA("Model") and _.PrimaryPart and
                                     _.PrimaryPart.Name == d.PrimaryPart.Name
                              then
                                 _:Destroy()
-                                if d.PrimaryPart.Name == "\x4F\x70\x74\x69\x63\x65\x4E\x6F\x64\x65" then
+                                if d.PrimaryPart.Name == "OpticeNode" then
                                     for _, _ in pairs(f:GetChildren()) do
-                                        if _.Name == "\x50\x72\x6F\x6A\x65\x63\x74\x6F\x72\x53\x69\x67\x68\x74" then
+                                        if _.Name == "ProjectorSight" then
                                             _:Destroy()
                                         end
                                     end
@@ -157,25 +157,25 @@ function AttachAttachment(a, f, c, _, b)
                             end
                         end
                         for _, _ in pairs(f:GetDescendants()) do
-                            if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
+                            if _ and _:IsA("BasePart") then
                                 _.Anchored = true
                             end
                         end
                         local _ = d:Clone()
                         _.Parent = f
                         _:SetPrimaryPartCFrame(
-                            f:WaitForChild("\x4E\x6F\x64\x65\x5F\x53\x74\x6F\x72\x61\x67\x65"):WaitForChild(
+                            f:WaitForChild("Node_Storage"):WaitForChild(
                                 _.PrimaryPart.Name
                             ).CFrame
                         )
                         for _, _ in pairs(_:GetChildren()) do
-                            if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
-                                u.utilitiesModule.Weld(_, f:WaitForChild("\x47\x72\x69\x70"))
+                            if _ and _:IsA("BasePart") then
+                                u.utilitiesModule.Weld(_, f:WaitForChild("Grip"))
                             end
                         end
                         if b then
                             for _, _ in pairs(_:GetChildren()) do
-                                if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
+                                if _ and _:IsA("BasePart") then
                                     _.Anchored = false
                                     _.CanCollide = false
                                 end
@@ -184,95 +184,95 @@ function AttachAttachment(a, f, c, _, b)
                         local a
                         for _, _ in pairs(_:GetChildren()) do
                             if
-                                _ and _:IsA("\x4D\x6F\x64\x75\x6C\x65\x53\x63\x72\x69\x70\x74") and
-                                    _.Name == "\x41\x74\x74\x63\x68\x4D\x6F\x64"
+                                _ and _:IsA("ModuleScript") and
+                                    _.Name == "AttchMod"
                              then
                                 a = require(_)
                             end
                         end
-                        if _:FindFirstChild("\x41\x69\x6D\x50\x61\x72\x74") then
+                        if _:FindFirstChild("AimPart") then
                             for _, _ in pairs(f:GetChildren()) do
-                                if _ and _.Name == "\x49\x52\x53" then
+                                if _ and _.Name == "IRS" then
                                     _.Transparency = 1
                                 end
                             end
-                            f:WaitForChild("\x41\x69\x6D\x50\x61\x72\x74"):Destroy()
-                            _:WaitForChild("\x41\x69\x6D\x50\x61\x72\x74").Parent = f
-                            if f:FindFirstChild("\x41\x69\x6D\x50\x61\x72\x74\x32") then
-                                f:WaitForChild("\x41\x69\x6D\x50\x61\x72\x74\x32"):Destroy()
+                            f:WaitForChild("AimPart"):Destroy()
+                            _:WaitForChild("AimPart").Parent = f
+                            if f:FindFirstChild("AimPart2") then
+                                f:WaitForChild("AimPart2"):Destroy()
                             end
-                            if _:FindFirstChild("\x41\x69\x6D\x50\x61\x72\x74\x32") then
-                                _:WaitForChild("\x41\x69\x6D\x50\x61\x72\x74\x32").Parent = f
+                            if _:FindFirstChild("AimPart2") then
+                                _:WaitForChild("AimPart2").Parent = f
                             end
                             for _, _ in pairs(_:GetChildren()) do
-                                if _ and _.Name == "\x50\x72\x6F\x6A\x65\x63\x74\x6F\x72\x53\x69\x67\x68\x74" then
+                                if _ and _.Name == "ProjectorSight" then
                                     _:Destroy()
                                 end
                             end
                         end
-                        if _:FindFirstChild("\x46\x69\x72\x65\x50\x61\x72\x74") then
-                            f:WaitForChild("\x47\x72\x69\x70"):WaitForChild("\x46\x69\x72\x65"):Destroy()
-                            _:WaitForChild("\x46\x69\x72\x65\x50\x61\x72\x74"):WaitForChild("\x46\x69\x72\x65"):Clone().Parent =
-                                f:WaitForChild("\x47\x72\x69\x70")
-                            f:WaitForChild("\x47\x72\x69\x70"):WaitForChild("\x46\x69\x72\x65").SoundId =
-                                "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. a[e][1]
-                            f:WaitForChild("\x47\x72\x69\x70"):WaitForChild("\x46\x69\x72\x65").PlaybackSpeed = a[e][2]
-                            f:WaitForChild("\x46\x69\x72\x65\x50\x61\x72\x74"):Destroy()
-                            _:WaitForChild("\x46\x69\x72\x65\x50\x61\x72\x74").Parent = f
+                        if _:FindFirstChild("FirePart") then
+                            f:WaitForChild("Grip"):WaitForChild("Fire"):Destroy()
+                            _:WaitForChild("FirePart"):WaitForChild("Fire"):Clone().Parent =
+                                f:WaitForChild("Grip")
+                            f:WaitForChild("Grip"):WaitForChild("Fire").SoundId =
+                                "rbxassetid://" .. a[e][1]
+                            f:WaitForChild("Grip"):WaitForChild("Fire").PlaybackSpeed = a[e][2]
+                            f:WaitForChild("FirePart"):Destroy()
+                            _:WaitForChild("FirePart").Parent = f
                         end
-                        if _:FindFirstChild("\x4C\x61\x73\x65\x72\x4C\x69\x67\x68\x74") then
-                            if f:FindFirstChild("\x4C\x61\x73\x65\x72\x4C\x69\x67\x68\x74") then
-                                f:WaitForChild("\x4C\x61\x73\x65\x72\x4C\x69\x67\x68\x74"):Destroy()
+                        if _:FindFirstChild("LaserLight") then
+                            if f:FindFirstChild("LaserLight") then
+                                f:WaitForChild("LaserLight"):Destroy()
                             end
-                            _:WaitForChild("\x4C\x61\x73\x65\x72\x4C\x69\x67\x68\x74").Parent = f
+                            _:WaitForChild("LaserLight").Parent = f
                         end
                         local b = w:FindFirstChild(c.Name):FindFirstChild(e)
-                        if d.PrimaryPart.Name == "\x4F\x70\x74\x69\x63\x4E\x6F\x64\x65" then
+                        if d.PrimaryPart.Name == "OpticNode" then
                             if b then
                                 local _ =
-                                    b:FindFirstChild("\x4F\x76\x65\x72\x69\x64\x65\x43\x6F\x6E\x66\x69\x67") or
-                                    Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65")
+                                    b:FindFirstChild("OverideConfig") or
+                                    Instance.new("BoolValue")
                                 _.Parent = b
-                                _.Name = "\x4F\x76\x65\x72\x69\x64\x65\x43\x6F\x6E\x66\x69\x67"
+                                _.Name = "OverideConfig"
                                 _.Value = true
                                 local _ =
-                                    b:FindFirstChild("\x6F\x41\x69\x6D\x5A\x6F\x6F\x6D") or
-                                    Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65")
+                                    b:FindFirstChild("oAimZoom") or
+                                    Instance.new("NumberValue")
                                 _.Parent = b
-                                _.Name = "\x6F\x41\x69\x6D\x5A\x6F\x6F\x6D"
+                                _.Name = "oAimZoom"
                                 _.Value = a.AimZoom
                                 local _ =
-                                    b:FindFirstChild("\x6F\x41\x6C\x74\x41\x69\x6D\x5A\x6F\x6F\x6D") or
-                                    Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65")
+                                    b:FindFirstChild("oAltAimZoom") or
+                                    Instance.new("NumberValue")
                                 _.Parent = b
-                                _.Name = "\x6F\x41\x6C\x74\x41\x69\x6D\x5A\x6F\x6F\x6D"
+                                _.Name = "oAltAimZoom"
                                 _.Value = a.AltZoom
                                 local _ =
-                                    b:FindFirstChild("\x6F\x48\x6F\x70\x55\x70") or
-                                    Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65")
+                                    b:FindFirstChild("oHopUp") or
+                                    Instance.new("NumberValue")
                                 _.Parent = b
-                                _.Name = "\x6F\x48\x6F\x70\x55\x70"
+                                _.Name = "oHopUp"
                                 _.Value = a[e][1]
                             end
                             v.carbonAttachEvent:FireClient(c, true, d.PrimaryPart.Name, {a.AimZoom, a.AltZoom, a[e][1]})
-                        elseif d.PrimaryPart.Name == "\x47\x72\x69\x70\x4E\x6F\x64\x65" then
+                        elseif d.PrimaryPart.Name == "GripNode" then
                             local _ =
-                                b:FindFirstChild("\x4F\x76\x65\x72\x69\x64\x65\x50\x6F\x73") or
-                                Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65")
+                                b:FindFirstChild("OveridePos") or
+                                Instance.new("BoolValue")
                             _.Parent = b
-                            _.Name = "\x4F\x76\x65\x72\x69\x64\x65\x50\x6F\x73"
+                            _.Name = "OveridePos"
                             _.Value = true
                             local _ =
-                                b:FindFirstChild("\x41\x72\x6D\x50\x6F\x73\x31") or
-                                Instance.new("\x43\x46\x72\x61\x6D\x65\x56\x61\x6C\x75\x65")
+                                b:FindFirstChild("ArmPos1") or
+                                Instance.new("CFrameValue")
                             _.Parent = b
-                            _.Name = "\x41\x72\x6D\x50\x6F\x73\x31"
+                            _.Name = "ArmPos1"
                             _.Value = a[e][1]
                             local _ =
-                                b:FindFirstChild("\x41\x72\x6D\x50\x6F\x73\x32") or
-                                Instance.new("\x43\x46\x72\x61\x6D\x65\x56\x61\x6C\x75\x65")
+                                b:FindFirstChild("ArmPos2") or
+                                Instance.new("CFrameValue")
                             _.Parent = b
-                            _.Name = "\x41\x72\x6D\x50\x6F\x73\x32"
+                            _.Name = "ArmPos2"
                             _.Value = a[e][2]
                             v.carbonAttachEvent:FireClient(c, true, d.PrimaryPart.Name, {a[e][1], a[e][2]})
                         end
@@ -284,9 +284,9 @@ function AttachAttachment(a, f, c, _, b)
 end
 v.equipEvent.OnServerEvent:connect(
     function(m, c, i, l, d, e, f, b, a, _, g, h)
-        if not i or i ~= "\x41\x75\x74\x68" then
+        if not i or i ~= "Auth" then
             m:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
         if c then
@@ -295,20 +295,20 @@ v.equipEvent.OnServerEvent:connect(
             local c = {}
             local a = {}
             for _, _ in pairs(m.Character:GetChildren()) do
-                if _ and _.Name == "\x42\x61\x73\x65\x50\x61\x72\x74" then
+                if _ and _.Name == "BasePart" then
                     _:Destroy()
                 end
             end
-            if m.Character:FindFirstChild("\x48\x6F\x6C\x73\x74" .. l) then
-                m.Character:FindFirstChild("\x48\x6F\x6C\x73\x74" .. l):Destroy()
+            if m.Character:FindFirstChild("Holst" .. l) then
+                m.Character:FindFirstChild("Holst" .. l):Destroy()
             end
             local h = j:WaitForChild(l):clone()
             if o then
-                _ = p:WaitForChild(m.UserId):WaitForChild("\x50\x72\x69\x6D\x61\x72\x79").Value
-                g = p:WaitForChild(m.UserId):WaitForChild("\x53\x65\x63\x6F\x6E\x64\x61\x72\x79").Value
+                _ = p:WaitForChild(m.UserId):WaitForChild("Primary").Value
+                g = p:WaitForChild(m.UserId):WaitForChild("Secondary").Value
                 for _, _ in pairs(
-                    p:WaitForChild(m.UserId):WaitForChild("\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73"):WaitForChild(
-                        "\x50\x72\x69\x6D\x61\x72\x79\x5F\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73"
+                    p:WaitForChild(m.UserId):WaitForChild("Attachments"):WaitForChild(
+                        "Primary_Attachments"
                     ):GetChildren()
                 ) do
                     if _ then
@@ -316,8 +316,8 @@ v.equipEvent.OnServerEvent:connect(
                     end
                 end
                 for _, _ in pairs(
-                    p:WaitForChild(m.UserId):WaitForChild("\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73"):WaitForChild(
-                        "\x53\x65\x63\x6F\x6E\x64\x61\x72\x79\x5F\x41\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73"
+                    p:WaitForChild(m.UserId):WaitForChild("Attachments"):WaitForChild(
+                        "Secondary_Attachments"
                     ):GetChildren()
                 ) do
                     if _ then
@@ -325,14 +325,14 @@ v.equipEvent.OnServerEvent:connect(
                     end
                 end
                 if l == _ then
-                    AttachAttachment(c, h, m, "\x50\x72\x69\x6D\x61\x72\x79", false)
+                    AttachAttachment(c, h, m, "Primary", false)
                 elseif l == g then
-                    AttachAttachment(a, h, m, "\x53\x65\x63\x6F\x6E\x64\x61\x72\x79", false)
+                    AttachAttachment(a, h, m, "Secondary", false)
                 end
             end
             if t and not o then
                 local _ = s:FindFirstChild(m.UserId)
-                local e = _:FindFirstChild(h.Name) or Instance.new("\x46\x6F\x6C\x64\x65\x72")
+                local e = _:FindFirstChild(h.Name) or Instance.new("Folder")
                 e.Name = h.Name
                 e.Parent = _
                 local b = {}
@@ -346,7 +346,7 @@ v.equipEvent.OnServerEvent:connect(
                                 _:Destroy()
                             end
                         end
-                        c = Instance.new("\x53\x74\x72\x69\x6E\x67\x56\x61\x6C\x75\x65")
+                        c = Instance.new("StringValue")
                         c.Parent = e
                         c.Name = d.Name
                         c.Value = d.Name
@@ -359,105 +359,105 @@ v.equipEvent.OnServerEvent:connect(
                     end
                 end
             end
-            h.Name = "\x40" .. l
-            local a = Instance.new("\x50\x61\x72\x74")
-            a.Name = "\x42\x61\x73\x65\x50\x61\x72\x74"
+            h.Name = "@" .. l
+            local a = Instance.new("Part")
+            a.Name = "BasePart"
             a.Parent = m.Character
             a.Anchored = true
             a.CanCollide = false
             a.Transparency = 1
             a.Size = Vector3.new(0.1, 0.1, 0.1)
-            local _ = Instance.new("\x4D\x6F\x74\x6F\x72\x36\x44")
+            local _ = Instance.new("Motor6D")
             _.Parent = a
-            _.Name = "\x42\x61\x73\x65\x50\x61\x72\x74\x57"
+            _.Name = "BasePartW"
             _.Part0 = a
-            _.Part1 = m.Character:WaitForChild("\x48\x65\x61\x64")
+            _.Part1 = m.Character:WaitForChild("Head")
             a.Anchored = false
             _.C1 = CFrame.new()
             _.C0 = CFrame.new()
-            local _ = Instance.new("\x4D\x6F\x74\x6F\x72\x36\x44")
-            _.Name = "\x52\x41\x57"
+            local _ = Instance.new("Motor6D")
+            _.Name = "RAW"
             _.Part0 = a
-            _.Part1 = m.Character["\x52\x69\x67\x68\x74\x20\x41\x72\x6D"]
+            _.Part1 = m.Character["Right Arm"]
             _.Parent = a
             _.C1 = d
-            m.Character.Torso:WaitForChild("\x52\x69\x67\x68\x74\x20\x53\x68\x6F\x75\x6C\x64\x65\x72").Part1 = nil
-            local _ = Instance.new("\x4D\x6F\x74\x6F\x72\x36\x44")
-            _.Name = "\x4C\x41\x57"
+            m.Character.Torso:WaitForChild("Right Shoulder").Part1 = nil
+            local _ = Instance.new("Motor6D")
+            _.Name = "LAW"
             _.Part0 = a
-            _.Part1 = m.Character["\x4C\x65\x66\x74\x20\x41\x72\x6D"]
+            _.Part1 = m.Character["Left Arm"]
             _.Parent = a
             _.C1 = e
-            m.Character.Torso:WaitForChild("\x4C\x65\x66\x74\x20\x53\x68\x6F\x75\x6C\x64\x65\x72").Part1 = nil
+            m.Character.Torso:WaitForChild("Left Shoulder").Part1 = nil
             h.Parent = m.Character
             for _, a in pairs(h:GetChildren()) do
-                if a and not a:FindFirstChild(a.Name) and a:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
-                    u.utilitiesModule.Weld(a, h:WaitForChild("\x47\x72\x69\x70"))
+                if a and not a:FindFirstChild(a.Name) and a:IsA("BasePart") then
+                    u.utilitiesModule.Weld(a, h:WaitForChild("Grip"))
                 end
                 if
-                    a and a.Name ~= "\x4E\x6F\x57\x65\x6C\x64" and
-                        (a:IsA("\x4D\x6F\x64\x65\x6C") or a:IsA("\x46\x6F\x6C\x64\x65\x72"))
+                    a and a.Name ~= "NoWeld" and
+                        (a:IsA("Model") or a:IsA("Folder"))
                  then
-                    if a.Name ~= "\x53\x68\x69\x65\x6C\x64" then
+                    if a.Name ~= "Shield" then
                         for _, _ in pairs(a:GetDescendants()) do
-                            if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
-                                u.utilitiesModule.Weld(_, h:WaitForChild("\x47\x72\x69\x70"))
+                            if _ and _:IsA("BasePart") then
+                                u.utilitiesModule.Weld(_, h:WaitForChild("Grip"))
                             end
                         end
-                    elseif a.Name == "\x53\x68\x69\x65\x6C\x64" then
+                    elseif a.Name == "Shield" then
                         for _, _ in pairs(a:GetDescendants()) do
-                            if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") and _.Name ~= "\x47\x72\x69\x70" then
-                                u.utilitiesModule.Weld(_, a:WaitForChild("\x47\x72\x69\x70"))
+                            if _ and _:IsA("BasePart") and _.Name ~= "Grip" then
+                                u.utilitiesModule.Weld(_, a:WaitForChild("Grip"))
                             end
                         end
                     end
                 end
             end
-            local _ = Instance.new("\x4D\x6F\x74\x6F\x72\x36\x44")
-            _.Name = "\x47\x72\x69\x70\x57"
+            local _ = Instance.new("Motor6D")
+            _.Name = "GripW"
             _.Parent = h.Grip
             _.Part0 = h.Grip
-            _.Part1 = m.Character["\x52\x69\x67\x68\x74\x20\x41\x72\x6D"]
+            _.Part1 = m.Character["Right Arm"]
             _.C1 = f
             local _
-            if h:FindFirstChild("\x53\x68\x69\x65\x6C\x64") then
-                _ = Instance.new("\x4D\x6F\x74\x6F\x72\x36\x44")
-                _.Name = "\x47\x72\x69\x70\x57\x32"
-                _.Parent = h:WaitForChild("\x53\x68\x69\x65\x6C\x64").Grip
-                _.Part0 = h:WaitForChild("\x53\x68\x69\x65\x6C\x64").Grip
-                _.Part1 = m.Character["\x4C\x65\x66\x74\x20\x41\x72\x6D"]
+            if h:FindFirstChild("Shield") then
+                _ = Instance.new("Motor6D")
+                _.Name = "GripW2"
+                _.Parent = h:WaitForChild("Shield").Grip
+                _.Part0 = h:WaitForChild("Shield").Grip
+                _.Part1 = m.Character["Left Arm"]
                 _.C1 = b
             end
             for _, _ in pairs(h:GetDescendants()) do
-                if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
+                if _ and _:IsA("BasePart") then
                     _.Anchored = false
                     _.CanCollide = false
                 end
             end
             for _, _ in pairs(h:GetDescendants()) do
-                if _ and _:IsA("\x47\x75\x69\x4F\x62\x6A\x65\x63\x74") then
+                if _ and _:IsA("GuiObject") then
                     _:Destroy()
                 end
             end
-            if m.Character and m.Character:FindFirstChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73") then
+            if m.Character and m.Character:FindFirstChild("CarbonValues") then
                 m.Character.CarbonValues.Equipped.Value = true
             end
-            if m.Character and m.Character:FindFirstChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73") then
+            if m.Character and m.Character:FindFirstChild("CarbonValues") then
                 m.Character.CarbonValues.SModel.Value = h
             end
         else
-            if m.Character and m.Character:FindFirstChild("\x40" .. l) then
-                m.Character["\x40" .. l]:Destroy()
+            if m.Character and m.Character:FindFirstChild("@" .. l) then
+                m.Character["@" .. l]:Destroy()
                 m.Character.BasePart:Destroy()
             end
-            m.Character.Torso:WaitForChild("\x52\x69\x67\x68\x74\x20\x53\x68\x6F\x75\x6C\x64\x65\x72").Part1 =
-                m.Character["\x52\x69\x67\x68\x74\x20\x41\x72\x6D"]
-            m.Character.Torso:WaitForChild("\x4C\x65\x66\x74\x20\x53\x68\x6F\x75\x6C\x64\x65\x72").Part1 =
-                m.Character["\x4C\x65\x66\x74\x20\x41\x72\x6D"]
+            m.Character.Torso:WaitForChild("Right Shoulder").Part1 =
+                m.Character["Right Arm"]
+            m.Character.Torso:WaitForChild("Left Shoulder").Part1 =
+                m.Character["Left Arm"]
             for _, a in pairs(m.Character:GetChildren()) do
                 if a then
                     for _, _ in pairs(k:GetChildren()) do
-                        if a.Name == "\x40" .. _.Name then
+                        if a.Name == "@" .. _.Name then
                             a:Destroy()
                         end
                     end
@@ -470,7 +470,7 @@ v.equipEvent.OnServerEvent:connect(
                     HolsterModel(m, j, l, g, h)
                 end
             end
-            if m.Character and m.Character:FindFirstChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73") then
+            if m.Character and m.Character:FindFirstChild("CarbonValues") then
                 m.Character.CarbonValues.Equipped.Value = false
                 m.Character.CarbonValues.SModel.Value = nil
                 m.Character.CarbonValues.LaserActive.Value = false
@@ -480,30 +480,30 @@ v.equipEvent.OnServerEvent:connect(
 )
 v.updateCharEvent.OnServerEvent:connect(
     function(e, c, _, a, d, b)
-        if not a or a ~= "\x41\x75\x74\x68" then
+        if not a or a ~= "Auth" then
             e:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
-        if e:IsA("\x50\x6C\x61\x79\x65\x72") and e.Character then
+        if e:IsA("Player") and e.Character then
             local a
             for _, _ in pairs(e.Character:GetDescendants()) do
-                if _ and _.Name == "\x53\x43\x6F\x6E\x66\x69\x67" then
+                if _ and _.Name == "SConfig" then
                     a = _
                 end
             end
-            if c == "\x53\x74\x61\x6E\x63\x65" then
+            if c == "Stance" then
                 if d == 0 then
-                    if e.Character:FindFirstChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73") then
-                        e.Character.CarbonValues:WaitForChild("\x6E\x65\x63\x6B\x43\x46").Value = CFrame.new()
+                    if e.Character:FindFirstChild("CarbonValues") then
+                        e.Character.CarbonValues:WaitForChild("neckCF").Value = CFrame.new()
                     end
                 elseif d == 1 then
-                    if e.Character:FindFirstChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73") then
-                        e.Character.CarbonValues:WaitForChild("\x6E\x65\x63\x6B\x43\x46").Value = CFrame.new()
+                    if e.Character:FindFirstChild("CarbonValues") then
+                        e.Character.CarbonValues:WaitForChild("neckCF").Value = CFrame.new()
                     end
                 elseif d == 2 then
-                    if e.Character:FindFirstChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73") then
-                        e.Character.CarbonValues:WaitForChild("\x6E\x65\x63\x6B\x43\x46").Value =
+                    if e.Character:FindFirstChild("CarbonValues") then
+                        e.Character.CarbonValues:WaitForChild("neckCF").Value =
                             CFrame.new(0, -0.5, 0.7) * CFrame.Angles(math.rad(90), 0, 0)
                     end
                 end
@@ -518,43 +518,43 @@ v.updateCharEvent.OnServerEvent:connect(
 )
 v.halfStepEvent.OnServerEvent:connect(
     function(c, b, a, _)
-        if not b or b ~= "\x41\x75\x74\x68" then
+        if not b or b ~= "Auth" then
             c:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
-        if c and c.Character and c.Character.CarbonValues:FindFirstChild("\x79\x52\x6F\x74") then
+        if c and c.Character and c.Character.CarbonValues:FindFirstChild("yRot") then
             if _ then
-                c.Character.CarbonValues:WaitForChild("\x79\x52\x6F\x74").Value = CFrame.Angles(a, 0, 0)
+                c.Character.CarbonValues:WaitForChild("yRot").Value = CFrame.Angles(a, 0, 0)
             else
-                c.Character.CarbonValues:WaitForChild("\x79\x52\x6F\x74").Value = CFrame.Angles(0, 0, 0)
+                c.Character.CarbonValues:WaitForChild("yRot").Value = CFrame.Angles(0, 0, 0)
             end
         end
     end
 )
 v.damageEvent.OnServerEvent:connect(
     function(d, e, _, b, c)
-        if not c[1] or not c[2] or c[2] ~= "\x41\x75\x74\x68" then
+        if not c[1] or not c[2] or c[2] ~= "Auth" then
             d:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
         for _, a in pairs(c) do
-            if a and _ ~= 2 and a ~= "\x6E\x69\x6C" then
+            if a and _ ~= 2 and a ~= "nil" then
                 d:Kick(
-                    "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                    "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
                 )
             end
         end
         if d.Character and d.Character.Humanoid and d.Character.Humanoid.Health > 0 then
-            if e.Parent:FindFirstChild("\x42\x6C\x6F\x63\x6B") or e.Parent:FindFirstChild("\x45\x42\x6C\x6F\x63\x6B") then
+            if e.Parent:FindFirstChild("Block") or e.Parent:FindFirstChild("EBlock") then
                 local _
-                if e.Parent:FindFirstChild("\x42\x6C\x6F\x63\x6B") then
+                if e.Parent:FindFirstChild("Block") then
                     _ = e.Parent.Block
-                elseif e.Parent:FindFirstChild("\x45\x42\x6C\x6F\x63\x6B") then
+                elseif e.Parent:FindFirstChild("EBlock") then
                     _ = e.Parent.EBlock
                 end
-                if not _:FindFirstChild("\x50\x61\x72\x72\x79") then
+                if not _:FindFirstChild("Parry") then
                     _.Value = _.Value - u.globalConfig.BlockNegate
                 else
                     _.Value = _.Value - u.globalConfig.ParryNegate
@@ -562,30 +562,30 @@ v.damageEvent.OnServerEvent:connect(
             else
                 e:TakeDamage(_)
                 local c = e.Parent
-                if c:FindFirstChild("\x43\x45\x5F\x4D\x65\x64\x69\x63\x61\x6C") and c:FindFirstChild(b) then
-                    local _ = Instance.new("\x4F\x62\x6A\x65\x63\x74\x56\x61\x6C\x75\x65")
-                    _.Name = "\x57\x6F\x75\x6E\x64"
-                    if b ~= "\x48\x75\x6D\x61\x6E\x6F\x69\x64\x52\x6F\x6F\x74\x50\x61\x72\x74" then
+                if c:FindFirstChild("CE_Medical") and c:FindFirstChild(b) then
+                    local _ = Instance.new("ObjectValue")
+                    _.Name = "Wound"
+                    if b ~= "HumanoidRootPart" then
                         _.Value = c:WaitForChild(b)
                     else
-                        _.Value = c:WaitForChild("\x54\x6F\x72\x73\x6F")
+                        _.Value = c:WaitForChild("Torso")
                     end
                     _.Parent =
-                        c:WaitForChild("\x43\x45\x5F\x4D\x65\x64\x69\x63\x61\x6C"):WaitForChild(
-                        "\x45\x66\x66\x65\x63\x74\x73"
+                        c:WaitForChild("CE_Medical"):WaitForChild(
+                        "Effects"
                     )
                 end
                 local _ =
-                    d.Character:WaitForChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73"):WaitForChild(
-                    "\x4C\x61\x73\x74\x48\x75\x6D"
+                    d.Character:WaitForChild("CarbonValues"):WaitForChild(
+                    "LastHum"
                 ).Value
                 if e.Health <= 0 and e ~= _ then
                     if q and q:FindFirstChild(d.Name) then
                         local _ = q[d.Name]
                         _.Value = not _.Value
                     end
-                    d.Character:WaitForChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73"):WaitForChild(
-                            "\x4C\x61\x73\x74\x48\x75\x6D"
+                    d.Character:WaitForChild("CarbonValues"):WaitForChild(
+                            "LastHum"
                         ).Value = e
                     if
                         u.globalConfig.HttpPosts and u.webConfig.webhookKey ~= "" and d and
@@ -595,7 +595,7 @@ v.damageEvent.OnServerEvent:connect(
                      then
                         local _ = {
                             content = d.Name ..
-                                "\x20\x48\x61\x73\x20\x4B\x69\x6C\x6C\x65\x64\x20" ..
+                                " Has Killed " ..
                                     game.Players:GetPlayerFromCharacter(e.Parent).Name
                         }
                         _ = a:JSONEncode(_)
@@ -609,9 +609,9 @@ v.damageEvent.OnServerEvent:connect(
 )
 v.whizEvent.OnServerEvent:connect(
     function(i, _, c, b, a, e, g, f, h, d)
-        if not h or h ~= "\x41\x75\x74\x68" then
+        if not h or h ~= "Auth" then
             i:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
         v.whizEvent:FireAllClients(i, _, c, b, a, e, g, f, d)
@@ -619,53 +619,53 @@ v.whizEvent.OnServerEvent:connect(
 )
 v.hitEvent.OnServerEvent:connect(
     function(b, f, j, a, _, _, k, o)
-        if not _ or _ ~= "\x41\x75\x74\x68" then
+        if not _ or _ ~= "Auth" then
             b:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
-        if r and o and o.Name ~= "\x45\x53\x68\x69\x65\x6C\x64" then
-            local b = Instance.new("\x50\x61\x72\x74", r)
-            b.FormFactor = "\x43\x75\x73\x74\x6F\x6D"
+        if r and o and o.Name ~= "EShield" then
+            local b = Instance.new("Part", r)
+            b.FormFactor = "Custom"
             b.TopSurface = 0
             b.BottomSurface = 0
             b.Transparency = 1
             b.CanCollide = false
             b.Size = Vector3.new(0.5, 0, 0.5)
             b.CFrame = CFrame.new(f) * CFrame.fromAxisAngle(j.magnitude == 0 and Vector3.new(1) or j.unit, a)
-            b.BrickColor = BrickColor.new("\x52\x65\x61\x6C\x6C\x79\x20\x62\x6C\x61\x63\x6B")
-            b.Material = "\x53\x6D\x6F\x6F\x74\x68\x50\x6C\x61\x73\x74\x69\x63"
+            b.BrickColor = BrickColor.new("Really black")
+            b.Material = "SmoothPlastic"
             b.Anchored = true
             game.Debris:AddItem(b, 5)
-            local _ = Instance.new("\x44\x65\x63\x61\x6C", b)
-            _.Texture = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F\x36\x34\x32\x39\x31\x39\x37\x37"
-            _.Face = "\x54\x6F\x70"
+            local _ = Instance.new("Decal", b)
+            _.Texture = "rbxassetid://64291977"
+            _.Face = "Top"
             game.Debris:AddItem(_, 3)
-            local _ = Instance.new("\x50\x6F\x69\x6E\x74\x4C\x69\x67\x68\x74", b)
+            local _ = Instance.new("PointLight", b)
             _.Color = Color3.new(0, 0, 0)
             _.Range = 0
             _.Shadows = true
             for _, _ in pairs(game.Players:GetChildren()) do
                 if
-                    _:IsA("\x50\x6C\x61\x79\x65\x72") and _.Character and
-                        _.Character:FindFirstChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64\x52\x6F\x6F\x74\x50\x61\x72\x74") and
+                    _:IsA("Player") and _.Character and
+                        _.Character:FindFirstChild("HumanoidRootPart") and
                         (_.Character.HumanoidRootPart.Position - f).magnitude <= 30
                  then
-                    local a = Instance.new("\x53\x6F\x75\x6E\x64")
-                    a.Name = "\x43\x72\x61\x63\x6B"
+                    local a = Instance.new("Sound")
+                    a.Name = "Crack"
                     if
                         o.Material == Enum.Material.Grass or o.Material == Enum.Material.Ice or
                             o.Material == Enum.Material.Fabric or
                             o.Material == Enum.Material.Pebble
                      then
-                        a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. c[math.random(1, #c)]
+                        a.SoundId = "rbxassetid://" .. c[math.random(1, #c)]
                     end
                     if o.Material == Enum.Material.Sand then
-                        a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. d[math.random(1, #d)]
+                        a.SoundId = "rbxassetid://" .. d[math.random(1, #d)]
                     end
                     if o.Material == Enum.Material.Glass then
                         if u.globalConfig.CanBreakGlass then
-                            a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. h[math.random(1, #h)]
+                            a.SoundId = "rbxassetid://" .. h[math.random(1, #h)]
                             delay(
                                 a.TimeLength,
                                 function()
@@ -675,23 +675,23 @@ v.hitEvent.OnServerEvent:connect(
                                 end
                             )
                         else
-                            a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. n[math.random(1, #n)]
+                            a.SoundId = "rbxassetid://" .. n[math.random(1, #n)]
                         end
                     end
                     if o.Material == Enum.Material.Neon then
-                        a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. n[math.random(1, #n)]
+                        a.SoundId = "rbxassetid://" .. n[math.random(1, #n)]
                     end
                     if o.Material == Enum.Material.Wood or o.Material == Enum.Material.WoodPlanks then
-                        a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. g[math.random(1, #g)]
+                        a.SoundId = "rbxassetid://" .. g[math.random(1, #g)]
                     end
                     if
                         o.Material == Enum.Material.Metal or o.Material == Enum.Material.CorrodedMetal or
                             o.Material == Enum.Material.DiamondPlate
                      then
-                        a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. e[math.random(1, #e)]
+                        a.SoundId = "rbxassetid://" .. e[math.random(1, #e)]
                     end
                     if o.Material == Enum.Material.Water then
-                        a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. i[math.random(1, #i)]
+                        a.SoundId = "rbxassetid://" .. i[math.random(1, #i)]
                     end
                     if
                         o.Material == Enum.Material.Concrete or o.Material == Enum.Material.Plastic or
@@ -703,7 +703,7 @@ v.hitEvent.OnServerEvent:connect(
                             o.Material == Enum.Material.Marble or
                             o.Material == Enum.Material.Cobblestone
                      then
-                        a.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. l[math.random(1, #l)]
+                        a.SoundId = "rbxassetid://" .. l[math.random(1, #l)]
                     end
                     a.EmitterSize = 10
                     a.MaxDistance = 30
@@ -724,8 +724,8 @@ v.hitEvent.OnServerEvent:connect(
             end
             local a
             local _
-            if k == "\x50\x61\x72\x74" then
-                local a = "\x48\x61\x72\x64"
+            if k == "Part" then
+                local a = "Hard"
                 if
                     o.Material == Enum.Material.Asphalt or o.Material == Enum.Material.Basalt or
                         o.Material == Enum.Material.Brick or
@@ -744,40 +744,40 @@ v.hitEvent.OnServerEvent:connect(
                         o.Material == Enum.Material.Slate or
                         o.Material == Enum.Material.SmoothPlastic
                  then
-                    a = "\x48\x61\x72\x64"
+                    a = "Hard"
                 elseif
                     o.Material == Enum.Material.Grass or o.Material == Enum.Material.Ground or
                         o.Material == Enum.Material.LeafyGrass or
                         o.Material == Enum.Material.Mud
                  then
-                    a = "\x53\x6F\x66\x74"
+                    a = "Soft"
                 elseif
                     o.Material == Enum.Material.Salt or o.Material == Enum.Material.Sand or
                         o.Material == Enum.Material.Snow or
                         o.Material == Enum.Material.Water
                  then
-                    a = "\x4C\x6F\x6F\x73\x65"
+                    a = "Loose"
                 elseif
                     o.Material == Enum.Material.CorrodedMetal or o.Material == Enum.Material.Metal or
                         o.Material == Enum.Material.DiamondPlate
                  then
-                    a = "\x4D\x65\x74\x61\x6C"
+                    a = "Metal"
                 elseif o.Material == Enum.Material.Fabric then
-                    a = "\x46\x61\x62\x72\x69\x63"
+                    a = "Fabric"
                 elseif
                     o.Material == Enum.Material.Glass or o.Material == Enum.Material.Glacier or
                         o.Material == Enum.Material.Ice or
                         o.Material == Enum.Material.Neon
                  then
-                    a = "\x47\x6C\x61\x73\x73"
+                    a = "Glass"
                 elseif o.Material == Enum.Material.Wood or o.Material == Enum.Material.WoodPlanks then
-                    a = "\x57\x6F\x6F\x64"
+                    a = "Wood"
                 end
                 for _, _ in pairs(m:GetChildren()) do
-                    if _ and _.Name:sub(1, 6) == "\x5B\x49\x4D\x43\x54\x5D" and _.Name:sub(8, string.len(_.Name)) == a then
+                    if _ and _.Name:sub(1, 6) == "[IMCT]" and _.Name:sub(8, string.len(_.Name)) == a then
                         local _ = _:clone()
                         _.Parent = b
-                        _.EmissionDirection = "\x54\x6F\x70"
+                        _.EmissionDirection = "Top"
                         _.Enabled = true
                         game.Debris:AddItem(_, 3)
                         delay(
@@ -789,16 +789,16 @@ v.hitEvent.OnServerEvent:connect(
                     end
                 end
                 for _, _ in pairs(o:GetChildren()) do
-                    if _ and _:IsA("\x4C\x69\x67\x68\x74") then
+                    if _ and _:IsA("Light") then
                         if u.globalConfig.LightsOut then
                             _:Destroy()
                         end
                     end
                 end
-            elseif k == "\x48\x75\x6D\x61\x6E" then
-                a = m:WaitForChild("\x42\x6C\x6F\x6F\x64"):clone()
+            elseif k == "Human" then
+                a = m:WaitForChild("Blood"):clone()
                 a.Parent = b
-                a.EmissionDirection = "\x54\x6F\x70"
+                a.EmissionDirection = "Top"
                 a.Enabled = true
                 game.Debris:AddItem(a, 1.75)
                 delay(
@@ -808,49 +808,49 @@ v.hitEvent.OnServerEvent:connect(
                     end
                 )
             end
-            game:GetService("\x44\x65\x62\x72\x69\x73"):AddItem(b, 3)
+            game:GetService("Debris"):AddItem(b, 3)
         end
     end
 )
 v.flybyEvent.OnServerEvent:connect(
     function(a, b, _, _, _, _, _)
-        if not _ or _ ~= "\x41\x75\x74\x68" then
+        if not _ or _ ~= "Auth" then
             a:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
-        local _ = Instance.new("\x53\x6F\x75\x6E\x64")
+        local _ = Instance.new("Sound")
         _.Parent = b.PlayerGui
-        _.SoundId = "\x72\x62\x78\x61\x73\x73\x65\x74\x69\x64\x3A\x2F\x2F" .. f[math.random(1, #f)]
+        _.SoundId = "rbxassetid://" .. f[math.random(1, #f)]
         _:Play()
         game.Debris:AddItem(_, _.TimeLength)
     end
 )
 v.serverFXEvent.OnServerEvent:connect(
     function(b, a, _, _, _, _, _, _)
-        if not _ or _ ~= "\x41\x75\x74\x68" then
+        if not _ or _ ~= "Auth" then
             b:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
         for _, _ in pairs(game.Players:GetChildren()) do
-            if _:IsA("\x50\x6C\x61\x79\x65\x72") then
+            if _:IsA("Player") then
                 v.serverFXEvent:FireClient(_, a, b)
             end
         end
     end
 )
 function v.storeDataEvent.OnServerInvoke(s, p, r, l, j, k, i, g, h, n, f, m, o, e, a, _, c, b, d, q)
-    if not m or m ~= "\x41\x75\x74\x68" then
+    if not m or m ~= "Auth" then
         s:Kick(
-            "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+            "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
         )
     end
-    if p == "\x52\x65\x74\x72\x69\x65\x76\x65" then
+    if p == "Retrieve" then
         local _
         if
             w:FindFirstChild(s.Name) and w:FindFirstChild(s.Name):FindFirstChild(r) and
-                w:FindFirstChild(s.Name):FindFirstChild(r):FindFirstChild("\x41\x6D\x6D\x6F")
+                w:FindFirstChild(s.Name):FindFirstChild(r):FindFirstChild("Ammo")
          then
             return true, w:FindFirstChild(s.Name):FindFirstChild(r).Ammo.Value, w:FindFirstChild(s.Name):FindFirstChild(
                 r
@@ -872,79 +872,79 @@ function v.storeDataEvent.OnServerInvoke(s, p, r, l, j, k, i, g, h, n, f, m, o, 
             }
         else
             if not w:FindFirstChild(s.Name) then
-                _ = Instance.new("\x46\x6F\x6C\x64\x65\x72")
+                _ = Instance.new("Folder")
                 _.Name = s.Name
                 _.Parent = w
             elseif w:FindFirstChild(s.Name) then
                 _ = w:FindFirstChild(s.Name)
             end
-            local f = _:FindFirstChild(r) or Instance.new("\x46\x6F\x6C\x64\x65\x72")
+            local f = _:FindFirstChild(r) or Instance.new("Folder")
             f.Name = r
             f.Parent = _
-            local _ = Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x41\x6D\x6D\x6F"
+            local _ = Instance.new("NumberValue", f)
+            _.Name = "Ammo"
             _.Value = l
-            local _ = Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x53\x74\x6F\x72\x65\x64\x41\x6D\x6D\x6F"
+            local _ = Instance.new("NumberValue", f)
+            _.Name = "StoredAmmo"
             _.Value = j
-            local _ = Instance.new("\x49\x6E\x74\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x45\x78\x70\x6C\x6F\x73\x69\x76\x65\x41\x6D\x6D\x6F"
+            local _ = Instance.new("IntValue", f)
+            _.Name = "ExplosiveAmmo"
             _.Value = k
-            local _ = Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x46\x69\x72\x65\x6D\x6F\x64\x65"
+            local _ = Instance.new("NumberValue", f)
+            _.Name = "Firemode"
             _.Value = i
-            local _ = Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x41\x69\x6D\x65\x64\x53\x65\x6E\x73"
+            local _ = Instance.new("NumberValue", f)
+            _.Name = "AimedSens"
             _.Value = g
-            local _ = Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x55\x6E\x61\x69\x6D\x65\x64\x53\x65\x6E\x73"
+            local _ = Instance.new("NumberValue", f)
+            _.Name = "UnaimedSens"
             _.Value = h
-            local _ = Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x43\x61\x6E\x53\x68\x6F\x6F\x74"
+            local _ = Instance.new("BoolValue", f)
+            _.Name = "CanShoot"
             _.Value = n
-            local _ = Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x52\x6F\x75\x6E\x64\x43\x68\x61\x6D\x62\x65\x72\x65\x64"
+            local _ = Instance.new("BoolValue", f)
+            _.Name = "RoundChambered"
             _.Value = _
-            local _ = Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x45\x78\x70\x6C\x6F\x46\x69\x72\x65\x64"
+            local _ = Instance.new("BoolValue", f)
+            _.Name = "ExploFired"
             _.Value = o
-            local _ = Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x53\x69\x67\x68\x74\x73\x43\x79\x63\x6C\x65\x64"
+            local _ = Instance.new("BoolValue", f)
+            _.Name = "SightsCycled"
             _.Value = false
             local d =
-                f:FindFirstChild("\x4F\x76\x65\x72\x69\x64\x65\x43\x6F\x6E\x66\x69\x67") or
-                Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65", f)
-            d.Name = "\x4F\x76\x65\x72\x69\x64\x65\x43\x6F\x6E\x66\x69\x67"
+                f:FindFirstChild("OverideConfig") or
+                Instance.new("BoolValue", f)
+            d.Name = "OverideConfig"
             local c =
-                f:FindFirstChild("\x6F\x41\x69\x6D\x5A\x6F\x6F\x6D") or
-                Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            c.Name = "\x6F\x41\x69\x6D\x5A\x6F\x6F\x6D"
+                f:FindFirstChild("oAimZoom") or
+                Instance.new("NumberValue", f)
+            c.Name = "oAimZoom"
             local b =
-                f:FindFirstChild("\x6F\x41\x6C\x74\x41\x69\x6D\x5A\x6F\x6F\x6D") or
-                Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            b.Name = "\x6F\x41\x6C\x74\x41\x69\x6D\x5A\x6F\x6F\x6D"
+                f:FindFirstChild("oAltAimZoom") or
+                Instance.new("NumberValue", f)
+            b.Name = "oAltAimZoom"
             local e =
-                f:FindFirstChild("\x6F\x48\x6F\x70\x55\x70") or
-                Instance.new("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65", f)
-            e.Name = "\x6F\x48\x6F\x70\x55\x70"
+                f:FindFirstChild("oHopUp") or
+                Instance.new("NumberValue", f)
+            e.Name = "oHopUp"
             local _ =
-                f:FindFirstChild("\x4F\x76\x65\x72\x69\x64\x65\x50\x6F\x73") or
-                Instance.new("\x42\x6F\x6F\x6C\x56\x61\x6C\x75\x65", f)
-            _.Name = "\x4F\x76\x65\x72\x69\x64\x65\x50\x6F\x73"
+                f:FindFirstChild("OveridePos") or
+                Instance.new("BoolValue", f)
+            _.Name = "OveridePos"
             local a =
-                f:FindFirstChild("\x41\x72\x6D\x50\x6F\x73\x31") or
-                Instance.new("\x43\x46\x72\x61\x6D\x65\x56\x61\x6C\x75\x65", f)
-            a.Name = "\x41\x72\x6D\x50\x6F\x73\x31"
+                f:FindFirstChild("ArmPos1") or
+                Instance.new("CFrameValue", f)
+            a.Name = "ArmPos1"
             local f =
-                f:FindFirstChild("\x41\x72\x6D\x50\x6F\x73\x32") or
-                Instance.new("\x43\x46\x72\x61\x6D\x65\x56\x61\x6C\x75\x65", f)
-            f.Name = "\x41\x72\x6D\x50\x6F\x73\x32"
+                f:FindFirstChild("ArmPos2") or
+                Instance.new("CFrameValue", f)
+            f.Name = "ArmPos2"
             return false, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, d.Value, c.Value, b.Value, e.Value, _.Value, {
                 a.Value,
                 f.Value
             }
         end
-    elseif p == "\x53\x74\x6F\x72\x65" then
+    elseif p == "Store" then
         if w:FindFirstChild(s.Name):FindFirstChild(r) then
             if w:FindFirstChild(s.Name):FindFirstChild(r).Ammo then
                 w:FindFirstChild(s.Name):FindFirstChild(r).Ammo.Value = l
@@ -1006,7 +1006,7 @@ function v.storeDataEvent.OnServerInvoke(s, p, r, l, j, k, i, g, h, n, f, m, o, 
                 end
             end
         end
-    elseif p == "\x45\x72\x61\x73\x65" then
+    elseif p == "Erase" then
         for _, _ in pairs(w:GetChildren()) do
             if _.Name == s.Name then
                 _:Destroy()
@@ -1016,13 +1016,13 @@ function v.storeDataEvent.OnServerInvoke(s, p, r, l, j, k, i, g, h, n, f, m, o, 
 end
 v.createOwnerEvent.OnServerEvent:connect(
     function(b, a, _, _, _, _, _, _, _, _)
-        if not _ or _ ~= "\x41\x75\x74\x68" then
+        if not _ or _ ~= "Auth" then
             b:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
-        local _ = Instance.new("\x4F\x62\x6A\x65\x63\x74\x56\x61\x6C\x75\x65")
-        _.Name = "\x63\x72\x65\x61\x74\x6F\x72"
+        local _ = Instance.new("ObjectValue")
+        _.Name = "creator"
         _.Value = b
         _.Parent = a
         game.Debris:AddItem(_, 0.1)
@@ -1030,16 +1030,16 @@ v.createOwnerEvent.OnServerEvent:connect(
 )
 v.manipEvent.OnServerEvent:connect(
     function(c, a, b, _, _, _, _, _, _, _, _)
-        if not _ or _ ~= "\x41\x75\x74\x68" then
+        if not _ or _ ~= "Auth" then
             c:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
-        if b == "\x4C\x61\x73\x65\x72" then
-            if c.Character:FindFirstChild("\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73") then
+        if b == "Laser" then
+            if c.Character:FindFirstChild("CarbonValues") then
                 c.Character.CarbonValues.LaserActive.Value = a
             end
-        elseif b == "\x46\x6C\x61\x73\x68\x4C\x69\x67\x68\x74" then
+        elseif b == "FlashLight" then
             local _ = c.Character.CarbonValues.SModel.Value
             v.manipEvent:FireAllClients(c, _, a, b)
         end
@@ -1047,32 +1047,32 @@ v.manipEvent.OnServerEvent:connect(
 )
 v.medEvent.OnServerEvent:connect(
     function(b, a, _, _, _, _, _, _, _, _, _, _, _)
-        if not _ or _ ~= "\x41\x75\x74\x68" then
+        if not _ or _ ~= "Auth" then
             b:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
         if a then
-            b.Character:WaitForChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64").Health =
-                b.Character:WaitForChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64").MaxHealth
+            b.Character:WaitForChild("Humanoid").Health =
+                b.Character:WaitForChild("Humanoid").MaxHealth
         end
     end
 )
 v.explosiveEvent.OnServerEvent:connect(
     function(h, f, g, b, d, c, _, _, a, _, _, _, _, e, _)
-        if not e or e ~= "\x41\x75\x74\x68" then
+        if not e or e ~= "Auth" then
             h:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
-        local e = Instance.new("\x45\x78\x70\x6C\x6F\x73\x69\x6F\x6E")
+        local e = Instance.new("Explosion")
         e.Parent = r
         e.BlastPressure = b
         e.BlastRadius = d
         e.DestroyJointRadiusPercent = c
         e.ExplosionType = Enum.ExplosionType.NoCraters
         e.Position = g
-        local b = Instance.new("\x50\x61\x72\x74")
+        local b = Instance.new("Part")
         b.Parent = r
         b.Anchored = true
         b.CanCollide = false
@@ -1085,11 +1085,11 @@ v.explosiveEvent.OnServerEvent:connect(
         game.Debris:AddItem(b, _.TimeLength)
         if e.DestroyJointRadiusPercent <= 0 then
             for _, _ in pairs(game.Players:GetChildren()) do
-                if _ and _:IsA("\x50\x6C\x61\x79\x65\x72") then
+                if _ and _:IsA("Player") then
                     if
                         _.Character and
                             _.Character:FindFirstChild(
-                                "\x48\x75\x6D\x61\x6E\x6F\x69\x64\x52\x6F\x6F\x74\x50\x61\x72\x74"
+                                "HumanoidRootPart"
                             ) and
                             (_.Character.HumanoidRootPart.Position - g).magnitude <= e.BlastRadius
                      then
@@ -1102,23 +1102,23 @@ v.explosiveEvent.OnServerEvent:connect(
                                     function()
                                         if game.Players:GetPlayerFromCharacter(a.Parent) then
                                             local _ = game.Players:GetPlayerFromCharacter(a.Parent)
-                                            local _ = Instance.new("\x4F\x62\x6A\x65\x63\x74\x56\x61\x6C\x75\x65")
-                                            _.Name = "\x63\x72\x65\x61\x74\x6F\x72"
+                                            local _ = Instance.new("ObjectValue")
+                                            _.Name = "creator"
                                             _.Value = h
                                             _.Parent = a
                                             game.Debris:AddItem(_, 0.1)
                                             local _ =
                                                 h.Character:WaitForChild(
-                                                "\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73"
-                                            ):WaitForChild("\x4C\x61\x73\x74\x48\x75\x6D").Value
+                                                "CarbonValues"
+                                            ):WaitForChild("LastHum").Value
                                             if a.Health <= 0 and a ~= _ then
                                                 if q and q:FindFirstChild(h.Name) then
                                                     local _ = q[h.Name]
                                                     _.Value = not _.Value
                                                 end
                                                 h.Character:WaitForChild(
-                                                        "\x43\x61\x72\x62\x6F\x6E\x56\x61\x6C\x75\x65\x73"
-                                                    ):WaitForChild("\x4C\x61\x73\x74\x48\x75\x6D").Value = a
+                                                        "CarbonValues"
+                                                    ):WaitForChild("LastHum").Value = a
                                             end
                                         end
                                     end
@@ -1129,13 +1129,13 @@ v.explosiveEvent.OnServerEvent:connect(
                 end
             end
             for _, _ in pairs(workspace:GetDescendants()) do
-                if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
+                if _ and _:IsA("BasePart") then
                     if _ and (_.Position - g).magnitude <= d then
                         local _, _ = u.utilitiesModule.CheckForHealth(_)
                         if
                             _ and
-                                (_:IsA("\x49\x6E\x74\x56\x61\x6C\x75\x65") or
-                                    _:IsA("\x4E\x75\x6D\x62\x65\x72\x56\x61\x6C\x75\x65"))
+                                (_:IsA("IntValue") or
+                                    _:IsA("NumberValue"))
                          then
                             _.Value = _.Value - 500
                             break
@@ -1163,9 +1163,9 @@ v.explosiveEvent.OnServerEvent:connect(
 )
 v.nadeEvent.OnServerEvent:Connect(
     function(c, _, b, a)
-        if not b or b ~= "\x41\x75\x74\x68" then
+        if not b or b ~= "Auth" then
             c:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
         v.nadeEvent:FireAllClients(c, _, a)
@@ -1173,37 +1173,37 @@ v.nadeEvent.OnServerEvent:Connect(
 )
 v.connectionEvent.OnServerEvent:connect(
     function(d, c, a, b, _, _, _, _, _, _, _, _, _, _)
-        if not _ or _ ~= "\x41\x75\x74\x68" then
+        if not _ or _ ~= "Auth" then
             d:Kick(
-                "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+                "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
             )
         end
         v.connectionEvent:FireAllClients(c, a, d, b)
     end
 )
 function v.placeC4Event.OnServerInvoke(a, e, d, b, f, _, c)
-    if not f or f ~= "\x41\x75\x74\x68" then
+    if not f or f ~= "Auth" then
         a:Kick(
-            "\x45\x78\x70\x6C\x6F\x69\x74\x69\x6E\x67\x20\x69\x73\x20\x61\x20\x62\x61\x6E\x6E\x61\x62\x6C\x65\x20\x6F\x66\x66\x65\x6E\x73\x65\x2E\x20\x54\x68\x69\x73\x20\x61\x63\x74\x69\x6F\x6E\x20\x6C\x6F\x67\x20\x68\x61\x73\x20\x62\x65\x65\x6E\x20\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x20\x74\x6F\x20\x52\x4F\x42\x4C\x4F\x58\x2E"
+            "Exploiting is a bannable offense. This action log has been submitted to ROBLOX."
         )
     end
-    local a = m:WaitForChild("\x43\x34"):Clone()
+    local a = m:WaitForChild("C4"):Clone()
     a.Parent = workspace
     a:SetPrimaryPartCFrame(CFrame.new(e) * CFrame.fromAxisAngle(d.magnitude == 0 and Vector3.new(1) or d.unit, b))
     a.CEVARS.Hit.Value = c
     a.CEVARS.Pos.Value = e
     for _, _ in pairs(a:GetChildren()) do
-        if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") and _.Name ~= "\x47\x72\x69\x70" then
+        if _ and _:IsA("BasePart") and _.Name ~= "Grip" then
             u.utilitiesModule.Weld(_, a.Grip)
         end
     end
     for _, _ in pairs(a:GetChildren()) do
-        if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") and _.Name == "\x47\x72\x69\x70" then
+        if _ and _:IsA("BasePart") and _.Name == "Grip" then
             u.utilitiesModule.Weld(_, c)
         end
     end
     for _, _ in pairs(a:GetChildren()) do
-        if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
+        if _ and _:IsA("BasePart") then
             _.CanCollide = false
             _.Anchored = false
         end
@@ -1213,19 +1213,19 @@ end
 v.attachmentEvent.OnServerEvent:Connect(
     function(f, b, d)
         if
-            b ~= "" and d ~= "" and f.Character and f.Character:FindFirstChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64") and
+            b ~= "" and d ~= "" and f.Character and f.Character:FindFirstChild("Humanoid") and
                 f.Character.Humanoid.Health > 0 and
-                f.Character:FindFirstChild("\x40" .. b) and
-                f.Character:FindFirstChild("\x40" .. b):FindFirstChild(
-                    "\x4E\x6F\x64\x65\x5F\x53\x74\x6F\x72\x61\x67\x65"
+                f.Character:FindFirstChild("@" .. b) and
+                f.Character:FindFirstChild("@" .. b):FindFirstChild(
+                    "Node_Storage"
                 )
          then
             local _ = s:FindFirstChild(f.UserId)
-            local e = _:FindFirstChild(b) or Instance.new("\x46\x6F\x6C\x64\x65\x72")
+            local e = _:FindFirstChild(b) or Instance.new("Folder")
             e.Name = b
             e.Parent = _
             local a = t:FindFirstChild(d).PrimaryPart
-            local _ = f.Character:FindFirstChild("\x40" .. b)
+            local _ = f.Character:FindFirstChild("@" .. b)
             local c
             local b = {}
             for _, _ in pairs(e:GetChildren()) do
@@ -1233,7 +1233,7 @@ v.attachmentEvent.OnServerEvent:Connect(
                     _:Destroy()
                 end
             end
-            c = Instance.new("\x53\x74\x72\x69\x6E\x67\x56\x61\x6C\x75\x65")
+            c = Instance.new("StringValue")
             c.Parent = e
             c.Name = d
             c.Value = d
@@ -1248,9 +1248,9 @@ v.attachmentEvent.OnServerEvent:Connect(
 )
 v.clearAttchEvent.OnServerEvent:Connect(
     function(a, _)
-        if a.Character and a.Character:FindFirstChild("\x40" .. _) then
-            for _, _ in pairs(a.Character:FindFirstChild("\x40" .. _):GetDescendants()) do
-                if _ and _:IsA("\x42\x61\x73\x65\x50\x61\x72\x74") then
+        if a.Character and a.Character:FindFirstChild("@" .. _) then
+            for _, _ in pairs(a.Character:FindFirstChild("@" .. _):GetDescendants()) do
+                if _ and _:IsA("BasePart") then
                     _.Anchored = false
                     _.CanCollide = false
                 end
@@ -1258,9 +1258,9 @@ v.clearAttchEvent.OnServerEvent:Connect(
         end
     end
 )
-if workspace:FindFirstChild("\x43\x45\x52\x65\x73\x75\x70\x70\x6C\x79\x5F\x46\x6F\x6C\x64\x65\x72") then
+if workspace:FindFirstChild("CEResupply_Folder") then
     for _, _ in pairs(workspace.CEResupply_Folder:GetDescendants()) do
-        if _ and _.Name == "\x44\x65\x74\x65\x63\x74\x6F\x72" then
+        if _ and _.Name == "Detector" then
             _.MouseClick:connect(
                 function(_)
                     v.resupplyEvent:FireClient(_)
@@ -1273,7 +1273,7 @@ game.Players.PlayerAdded:Connect(
     function(_)
         _.CharacterAppearanceLoaded:connect(
             function(_)
-                _:WaitForChild("\x48\x75\x6D\x61\x6E\x6F\x69\x64").Died:Connect(
+                _:WaitForChild("Humanoid").Died:Connect(
                     function()
                         if u.globalConfig.RagdollEnabled then
                             u.ragdollModule(_)
