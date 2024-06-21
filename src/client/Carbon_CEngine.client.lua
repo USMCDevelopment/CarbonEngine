@@ -1,11 +1,11 @@
 repeat
-	wait()
+	task.wait()
 until game.Players.LocalPlayer.Character
 
 -- local configuration
 
 local shellCasings = false
-local shootFromCamera = true
+local shootFromCamera = false
 
 --[[ dint CE changes
 
