@@ -5,13 +5,18 @@ local _ = d:WaitForChild("Models")
 local k = _:WaitForChild("Client")
 local j = _:WaitForChild("Server")
 local _ = d:WaitForChild("HUD")
+
+--
+local Knit = require(game:GetService("ReplicatedStorage").Packages.Knit)
+local PaulService = Knit.GetService("PaulService")
+--
 local b = d:WaitForChild("Global")
 local c = d:WaitForChild("Modules")
 local q = game.ReplicatedStorage:FindFirstChild("[WB] Leaderstat Network") or nil
 local w = script:FindFirstChild("DataStorage") or Instance.new("Folder")
 w.Name = "DataStorage"
 w.Parent = script
-local s = script:FindFirstChild("AttachmentData") or Instance.new("Folder")
+local s = script:FindFirstChild("AttachmentData") or Instance.new("Folder") 
 s.Name = "AttachmentData"
 s.Parent = script
 local o = game.ReplicatedStorage:FindFirstChild("Menu_Storage") or nil
@@ -539,6 +544,9 @@ v.damageEvent.OnServerEvent:connect(
 						}
 						_ = a:JSONEncode(_)
 						a:PostAsync(u.webConfig.webhookKey, _)
+
+						-- DO PAULL LOGGING
+						PaulService:LogKill(d.Name, game.Players:GetPlayerFromCharacter(e.Parent).Name)
 					end
 					v.killFeedEvent:FireAllClients(d, game.Players:GetPlayerFromCharacter(e.Parent), b)
 				end
