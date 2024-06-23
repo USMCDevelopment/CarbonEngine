@@ -1,5 +1,5 @@
 repeat
-	task.wait()
+	wait()
 until game.Players.LocalPlayer.Character
 
 -- local configuration
@@ -511,9 +511,11 @@ function AttachAttachment(a, _)
 end
 
 function EquipModel(_)
+	print('guh')
 	va = true
 	Ka.mainFrame.Visible = true
 	ca = workspace:WaitForChild("BulletModel") or Instance.new("Folder")
+	print("hello hello")
 	ca.Name = "BulletModel"
 	ca.Parent = workspace
 	table.insert(ha, ca)
@@ -524,6 +526,7 @@ function EquipModel(_)
 	sa:BindAction("Shoot", MobileShoot, true)
 	sa:SetPosition("Shoot", UDim2.new(1, -85, 1, -75))
 	sa:SetImage("Shoot", "rbxassetid://5861899658")
+	--[[
 	if Ba:WaitForChild("PlayerGui"):FindFirstChild("ContextActionGui") then
 		Ba:WaitForChild("PlayerGui"):WaitForChild("ContextActionGui"):WaitForChild("ContextButtonFrame"):WaitForChild(
 		"ContextActionButton"
@@ -532,6 +535,7 @@ function EquipModel(_)
 		"ContextActionButton"
 		).Active = false
 	end
+	]]
 	sa:BindAction("SelectFire", MobileSelectFire, true)
 	sa:SetPosition("SelectFire", UDim2.new(1, -162, 1, -140))
 	sa:SetImage("SelectFire", "rbxassetid://5862289667")
@@ -662,7 +666,7 @@ function EquipModel(_)
 	local _ = ra:WaitForChild("EquipSound"):clone()
 	_.Parent = Ba.PlayerGui
 	_:Play()
-	game.Debris:AddItem(_, _.TimeLength)
+	--game.Debris:AddItem(_, _.TimeLength)
 	Ka.aimSFX = Ba.PlayerGui:FindFirstChild("AimSFX") or Instance.new("Sound")
 	Ka.aimSFX.Name = "AimSFX"
 	Ka.aimSFX.Parent = Ba.PlayerGui
@@ -681,6 +685,7 @@ function EquipModel(_)
 			nil,
 			"Auth"
 		)
+		print(n, e, f, d, b, _, _, c, a, l, _, g, m, h, i, k, j)
 	if n then
 		Ka.Ammo = e
 		Ka.StoredAmmo = f
@@ -783,6 +788,7 @@ function EquipModel(_)
 			false
 	end
 	local _ = require(Ka.tool:WaitForChild("ConfigMods"):WaitForChild("SConfig"))
+	print("Equipping " .. Ka.tool.Name)
 	Ea.equipEvent:FireServer(
 		true,
 		"Auth",
@@ -3866,17 +3872,21 @@ Da.humanoid.Swimming:Connect(
 ua.InputBegan:connect(--bintisepic zleep fest 😱😱😱😱😱😱😱😱😱😱😱😱😱
 	-- this entire connection is absolutley disgusting and horrid and terrible (not to mention terrible)
 	function(a, _)
-		if not _ and Ca and Da.humanoid.Health > 0 and Ka.curConfig then
+
+		if Ca and Da.humanoid.Health > 0 and Ka.curConfig then
 			if a.UserInputType == Ka.curConfig.ShootKeybind and Ca and not va and not wa and not ka and not na and not T then
 				Ka.MouseHeld = true
 				if not pa then
 					if not ja then
+						print("Not Ja")
 						if Ka.Ammo > 0 then
 							Shoot()
+							Ka.MouseHeld = false
 						end
 					else
 						if Ka.ExplosiveAmmo > 0 then
 							Shoot()
+							Ka.MouseHeld = false
 						end
 					end
 					if Ka.Ammo <= 0 or not Ka.CanShoot then

@@ -6,9 +6,8 @@ local k = _:WaitForChild("Client")
 local j = _:WaitForChild("Server")
 local _ = d:WaitForChild("HUD")
 
---
-local Knit = require(game:GetService("ReplicatedStorage").Packages.Knit)
-local PaulService = Knit.GetService("PaulService")
+-- SOME BASIC CONFIG HERE LOL
+local paulLogging = true -- make this false if you're not USMC lol
 --
 local b = d:WaitForChild("Global")
 local c = d:WaitForChild("Modules")
@@ -256,6 +255,7 @@ v.equipEvent.OnServerEvent:connect(
 		if not i or i ~= "Auth" then
 			m:Kick("Exploiting is a bannable offense. This action log has been submitted to ROBLOX.")
 		end
+		print("EquipEvent")
 		if c then
 			local _
 			local g
@@ -546,7 +546,11 @@ v.damageEvent.OnServerEvent:connect(
 						a:PostAsync(u.webConfig.webhookKey, _)
 
 						-- DO PAULL LOGGING
-						PaulService:LogKill(d.Name, game.Players:GetPlayerFromCharacter(e.Parent).Name)
+						if paulLogging then
+							local Knit = require(game:GetService("ReplicatedStorage").Packages.Knit)
+							local PaulService = Knit.GetService("PaulService")
+							PaulService:LogKill(d.Name, game.Players:GetPlayerFromCharacter(e.Parent).Name)
+						end
 					end
 					v.killFeedEvent:FireAllClients(d, game.Players:GetPlayerFromCharacter(e.Parent), b)
 				end
